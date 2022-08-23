@@ -1,6 +1,5 @@
-<h1><img src="https://www.comae.com/svg/Comae_logo-blue_withMFtag.svg" width="100px"/>  Comae Playbooks</h1>
+<h1><img src="https://www.comae.com/svg/Comae_logo-blue_withMFtag.svg" width="150px"/>  Comae Playbooks</h1>
 
-# Comae Playbooks
 Comae playbooks are a set of rules mapped to the [MITRE ATT&CK®](https://attack.mitre.org/) framework. They are designed to provide the ability for blue teamers, incident responders and threat hunters to ask complex questions to a memory snapshot acquired by [Comae DumpIt](https://magnetidealab.com) through our platform.
 
 ## Directory
