@@ -13,7 +13,7 @@ Below you will find the playbooks we have opened in this repository:
 Join the [Magnet IdeaLab](https://magnetidealab.com) to apply to Comae beta program to access our console and playbook engine.
 
 ## Learn more
-The Comae documentation is available [here]](https://help.comae.tech). 
+The Comae documentation is available [here](https://help.comae.tech). 
 
 [Read our latest blogpost](https://www.magnetforensics.com/blog/how-to-conquer-memory-analysis-for-incident-response-threat-hunting-and-compromise-assessment/) for more information about how to use memory analysis for incident response, threat hunting and compromise assessment.
 
