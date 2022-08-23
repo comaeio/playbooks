@@ -5,7 +5,7 @@ description = "Adversaries may inject code into processes in order to evade proc
 author = "Matt Suiche (@msuiche), Radovan Stevanovic"
 
 references = [
-  https://attack.mitre.org/techniques/T1055/012/
+  "https://attack.mitre.org/techniques/T1055/012/"
 ]
 date = 2022-08-20
 modified = 2022-08-23

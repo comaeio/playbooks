@@ -4,8 +4,8 @@ description = "Identifies Windows programs run from unexpected parent processes.
 author = "Matt Suiche (@msuiche), Radovan Stevanovic"
 
 references = [
-  https://www.elastic.co/guide/en/siem/guide/current/unusual-parent-child-relationship.html,
-  https://attack.mitre.org/techniques/T1055/012/
+  "https://www.elastic.co/guide/en/siem/guide/current/unusual-parent-child-relationship.html",
+  "https://attack.mitre.org/techniques/T1055/012/"
 ]
 date = 2022-08-20
 modified = 2022-08-23

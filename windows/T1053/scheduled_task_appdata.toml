@@ -4,9 +4,10 @@ description = "An adversary may use Windows Task Scheduler to execute programs a
 author = "Matt Suiche (@msuiche), Radovan Stevanovic"
 
 references = [
-  https://image.slidesharecdn.com/kheirkhabarovoffzonefinal-181117201458/95/hunting-for-privilege-escalation-in-windows-environment-74-638.jpg,
-  https://attack.mitre.org/techniques/T1053/005/
+  "https://image.slidesharecdn.com/kheirkhabarovoffzonefinal-181117201458/95/hunting-for-privilege-escalation-in-windows-environment-74-638.jpg",
+  "https://attack.mitre.org/techniques/T1053/005/"
 ]
+
 date = 2022-08-20
 modified = 2022-08-23
 
