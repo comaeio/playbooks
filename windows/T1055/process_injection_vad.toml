@@ -1,0 +1,39 @@
+
+name = "Process Injection (T1055)"
+
+description = "Adversaries may inject code into processes in order to evade process-based defenses as well as possibly elevate privileges."
+author = "Matt Suiche (@msuiche), Radovan Stevanovic"
+
+references = [
+  https://attack.mitre.org/techniques/T1055/012/
+]
+date = 2022-08-20
+modified = 2022-08-23
+
+tags = ["attack.privilege_escalation"]
+
+[[query]]
+threat = "malicious"
+mitre = ["T1055.011"]
+sql="""
+select distinct p.processId as PID, p.parentProcessId as PPID,  p.imageFileName as processName, p.commandLine as commandLine, v.startingVpn as startingVpn
+  from `Processes/vadObject` as v
+  left join `Processes/processObject` as p
+  on v.identity=p.identity
+  where  v.isImage = true  and  v.protection = 'MM_EXECUTE_READWRITE'
+"""
+
+# gql="""
+# vadObject(query: {
+#    isImage: {is:true},
+#    protection:{ is:EXECUTE_READWRITE}
+#  }) {
+#    processObject {
+#      processId
+#      commandLine
+#      parentProcessId
+#      processName
+#    }
+#    startingVpn
+#  }
+# """

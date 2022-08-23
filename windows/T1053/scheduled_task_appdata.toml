@@ -1,0 +1,34 @@
+name = "Scheduled Task Job (T1053)"
+
+description = "An adversary may use Windows Task Scheduler to execute programs at system startup or on a scheduled basis for persistence."
+author = "Matt Suiche (@msuiche), Radovan Stevanovic"
+
+references = [
+  https://image.slidesharecdn.com/kheirkhabarovoffzonefinal-181117201458/95/hunting-for-privilege-escalation-in-windows-environment-74-638.jpg,
+  https://attack.mitre.org/techniques/T1053/005/
+]
+date = 2022-08-20
+modified = 2022-08-23
+
+tags = ["attack.persistence"]
+
+[[query]]
+threat = "malicious"
+mitre = ["T1053.005"]
+sql="""
+select distinct t.path, t.user, t.command, t.description, t.author, t.hash , t.parameters
+ from `Machine.scheduledTasksInfo` as t
+ where (t.command like '%AppData\\Roaming%')
+"""
+
+# gql="""
+#  scheduledTasks(query: { command: { includes: "AppData\\Roaming" }}) {
+#    path
+#    user
+#    command
+#    description
+#    author
+#    hash
+#    parameters
+#  }
+# """

@@ -1,0 +1,91 @@
+name = "Unusual Parent-Child Relationship (T1055)"
+
+description = "Identifies Windows programs run from unexpected parent processes. This could indicate masquerading or other strange activity on a system."
+author = "Matt Suiche (@msuiche), Radovan Stevanovic"
+
+references = [
+  https://www.elastic.co/guide/en/siem/guide/current/unusual-parent-child-relationship.html,
+  https://attack.mitre.org/techniques/T1055/012/
+]
+date = 2022-08-20
+modified = 2022-08-23
+
+tags = ["attack.privilege_escalation"]
+
+[[query]]
+threat = "malicious"
+mitre = ["T1055.012"]
+sql="""
+select distinct p.processId , p.processName , p.parentProcessName , p.parentProcessId  from `Processes/processObject` as p
+  where (p.parentProcessName NOT IN ('System','smss.exe')  and p.processName = 'smss.exe')
+    or (p.parentProcessName NOT IN ('smss.exe','svchost.exe')  and p.processName = 'csrss.exe')
+    or (p.parentProcessName NOT IN ('smss.exe')  and p.processName = 'wininit.exe')
+    or (p.parentProcessName NOT IN ('smss.exe')  and p.processName = 'winlogon.exe')
+    or (p.parentProcessName NOT IN ('wininit.exe')  and p.processName = 'lsass.exe')
+    or (p.parentProcessName NOT IN ('winlogon.exe','wininit.exe')  and p.processName = 'LogonUI.exe')
+    or (p.parentProcessName NOT IN ('wininit.exe')  and p.processName = 'services.exe')
+    or (p.parentProcessName NOT IN ('services.exe','MsMpEng.exe')  and p.processName = 'svchost.exe')
+    or (p.parentProcessName NOT IN ('services.exe','MsMpEng.exe')  and p.processName = 'spoolsv.exe')
+    or (p.parentProcessName NOT IN ('services.exe','svchost.exe')  and p.processName = 'taskhost.exe')
+    or (p.parentProcessName NOT IN ('services.exe','svchost.exe')  and p.processName = 'taskhostw.exe')
+    or (p.parentProcessName NOT IN ('dwm.exe','winlogon.exe')  and p.processName = 'userinit.exe')
+limit 50 offset 0
+"""
+
+# gql="""
+#   processObject(query: [
+#    {
+#      processName: { is: "smss.exe" },
+#      parentProcessName: { notIn: ["System", "smss.exe"] }
+#    },
+#    {
+#      processName: { is: "csrss.exe" },
+#      parentProcessName: { notIn: ["smss.exe", "svchost.exe"] }
+#    },
+#    {
+#      processName: { is: "wininit.exe" },
+#      parentProcessName: { notIn: ["smss.exe"] }
+#    },
+#    {
+#      processName: { is: "winlogon.exe" },
+#      parentProcessName: { notIn: ["smss.exe"] }
+#    },
+#    {
+#      processName: { is: "lsass.exe" },
+#      parentProcessName: { notIn: ["wininit.exe"] }
+#    },
+#    {
+#      processName: { is: "LogonUI.exe" },
+#      parentProcessName: { notIn: ["winlogon.exe", "wininit.exe"] }
+#    },
+#    {
+#      processName: { is: "services.exe" },
+#      parentProcessName: { notIn: ["wininit.exe"] }
+#    },
+#    {
+#      processName: { is: "svchost.exe" },
+#      parentProcessName: { notIn: ["services.exe", "MsMpEng.exe"] }
+#    },
+#    {
+#      processName: { is: "spoolsv.exe" },
+#      parentProcessName: { notIn: ["services.exe", "MsMpEng.exe"] }
+#    },
+#    {
+#      processName: { is: "taskhost.exe" },
+#      parentProcessName: { notIn: ["services.exe", "svchost.exe"] }
+#    },
+#    {
+#      processName: { is: "taskhostw.exe" },
+#      parentProcessName: { notIn: ["services.exe", "svchost.exe"] }
+#    },
+#    {
+#      processName: { is: "userinit.exe" },
+#      parentProcessName: { notIn: ["dwm.exe", "winlogon.exe"] }
+#    },
+#  ]) {
+#    processId
+#    processName
+#    parentProcessName
+#    parentProcessId
+#  }
+# """
