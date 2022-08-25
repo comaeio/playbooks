@@ -1,4 +1,4 @@
-<h1><img src="https://www.comae.com/svg/Comae_logo-blue_withMFtag.svg" width="150px"/>  Comae Playbooks</h1>
+<h1><img src="docs/img/logo.svg" width="150px"/>  Comae Playbooks</h1>
 
 Comae playbooks are a set of rules mapped to the [MITRE ATT&CK®](https://attack.mitre.org/) framework. They are designed to provide the ability for blue teamers, incident responders and threat hunters to ask complex questions to a memory snapshot acquired by [Comae DumpIt](https://magnetidealab.com) through our platform.
 
@@ -33,11 +33,14 @@ The Comae documentation is available [here](https://help.comae.tech).
 
 [Read our latest blogpost](https://www.magnetforensics.com/blog/how-to-conquer-memory-analysis-for-incident-response-threat-hunting-and-compromise-assessment/) for more information about how to use memory analysis for incident response, threat hunting and compromise assessment.
 
+## Code of Conduct
+Read our [Code of Conduct](./docs/CODE_OF_CONDUCT.md) to keep our community approachable and respectable.
+
 ## Contribute
 Comae playbooks are open source and community developed. If you're interested in
 becoming a contributor, check out these resources:
 
 - Report bugs and request new features by [submitting an issue](https://github.com/comaeio/playbooks/issues/new).
-- Read our [contribution guide](https://github.com/comaeio/playbooks/wiki/Contributing)
+- Read our [contribution guide](docs/CONTRIBUTING.md)
   for more information about contributing directly to this repository.
 - Check the [license](LICENSE.txt) for information regarding the distribution and modification of Comae playbooks.
