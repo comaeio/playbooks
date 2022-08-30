@@ -17,14 +17,14 @@ Below you will find the playbooks we have opened in this repository:
 | Credential Access    |         0 |       0 |       0 |                 0 |
 | Discovery            |         0 |       0 |       0 |                 0 |
 | Execution            |         0 |       0 |       0 |                 0 |
-| Defense Evasion      |         0 |       0 |       0 |                 0 |
+| Defense Evasion      |         2 |       0 |       0 |                 2 |
 | Impact               |         0 |       0 |       0 |                 0 |
-| Privilege Escalation |         2 |       0 |       0 |                 2 |
+| Privilege Escalation |         3 |       0 |       0 |                 2 |
 | Initial Access       |         0 |       0 |       0 |                 0 |
 | Command and Control  |         0 |       0 |       0 |                 0 |
 | Lateral Movement     |         0 |       0 |       0 |                 0 |
 | Persistence          |         1 |       0 |       0 |                 1 |
-| Total by OS          |         3 |       0 |       0 |                 3 |
+| Total by OS          |         6 |       0 |       0 |                 5 |
 
 
 ## Get Started

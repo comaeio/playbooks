@@ -1,0 +1,72 @@
+name = "Software Packing Detection (TT1027.002)"
+
+description = "Adversaries may perform software packing or virtual machine software protection to conceal their code. Section names are a good indicator."
+author = "Matt Suiche (@msuiche), Radovan Stevanovic"
+
+references = [
+    "https://attack.mitre.org/techniques/T1027/002/"
+]
+
+date = 2022-08-30
+modified = 2022-08-30
+
+tags = ["attack.defense_evasion"]
+
+[[query]]
+threat = "suspicious"
+mitre = ["T1027.002"]
+sql="""select distinct p.processId, p.imageFileName, p.commandLine, s.name from `Processes/processObject` p
+left join `Processes/processObject.imageFileObject.sections` s
+on p.identity=s.identity
+where s.name not in (
+'.text',
+'.data',
+'.rdata',
+'.rsrc',
+'.idata',
+'.edata',
+'.pdata',
+'.rodata',
+'.reloc',
+'.bss',
+'.tls',
+'.sxdata',
+'.gfids',
+'.00cfg',
+'.code',
+'.CRT',
+'.didat',
+'.mrdata',
+'WOW64SVC',
+'W64SVC',
+'RT',
+'.ndr64',
+'.wpp_sf',
+'cachelin',
+'.isoapis',
+'SANONTCP',
+'CPADinfo',
+'prot',
+'RT_CODE',
+'.imrsiv',
+'.giats',
+'_RDATA',
+'.orpc',
+'_RDATA',
+'_text32',
+'RT_BSS',
+'RT_DATA',
+'RT_CONST'
+) """
+
+# gql="""
+#  processObject(query: [{imageFileObject: {sections: {name: {notIn: [".text", ".data", ".rdata", ".rsrc", ".idata", ".edata", ".pdata", ".rodata", ".reloc", ".bss", ".tls", ".sxdata", ".gfids", ".00cfg", ".code", ".CRT", ".didat", ".mrdata", "WOW64SVC", "W64SVC", "RT", ".ndr64", ".wpp_sf", "cachelin", ".isoapis", "SANONTCP", "CPADinfo", "prot", "RT_CODE", ".imrsiv", ".giats", "_RDATA", ".orpc", "_RDATA", "_text32", "RT_BSS", "RT_DATA", "RT_CONST"]}}}}]) {
+#    processId
+#    commandLine
+#    imageFileName
+#    imageFileObject {
+#      sections {
+#        name
+#      }
+#    }
+#  }
